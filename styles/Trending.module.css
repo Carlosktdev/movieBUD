@@ -1,0 +1,13 @@
+.trendingImg {
+  width: 200px;
+  border-radius: 10px;
+}
+
+.movieTittle {
+  color: white;
+}
+
+.viewAll {
+  font-size: 1.2rem;
+  cursor: pointer;
+}
