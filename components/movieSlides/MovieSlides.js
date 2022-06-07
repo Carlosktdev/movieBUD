@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Carousel } from "react-bootstrap";
 import styles from "../../styles/Trending.module.css";
-import MovieCard from "./movieCard";
+import MovieCard from "./MovieCard";
 
 const MovieSlides = ({ slidetitle, data }) => {
   const firstCarousel = data.results.slice(0, 5);
