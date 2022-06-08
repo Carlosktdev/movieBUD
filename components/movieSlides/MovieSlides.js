@@ -28,6 +28,7 @@ const MovieSlides = ({ slidetitle, data }) => {
                       title={card.name || card.original_title}
                       img={card.poster_path}
                       points={card.vote_average}
+                      movieID={card.id}
                     />
                   </div>
                 );
@@ -44,6 +45,7 @@ const MovieSlides = ({ slidetitle, data }) => {
                       title={card.name || card.original_title}
                       img={card.poster_path}
                       points={card.vote_average}
+                      movieID={card.id}
                     />
                   </div>
                 );
@@ -59,6 +61,7 @@ const MovieSlides = ({ slidetitle, data }) => {
                       title={card.name || card.original_title}
                       img={card.poster_path}
                       points={card.vote_average}
+                      movieID={card.id}
                     />
                   </div>
                 );
@@ -74,6 +77,7 @@ const MovieSlides = ({ slidetitle, data }) => {
                       title={card.name || card.original_title}
                       img={card.poster_path}
                       points={card.vote_average}
+                      movieID={card.id}
                     />
                   </div>
                 );

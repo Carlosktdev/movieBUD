@@ -9,12 +9,59 @@ import {
 import DropDown from "./DropDown";
 import styles from "../../styles/Home.module.css";
 
+const navPages = [
+  {
+    linkName: "Movies",
+    links: [
+      { linkText: "Latest movies", linkDir: "#" },
+      { linkText: "Now playing", linkDir: "#" },
+      { linkText: "Popular movies", linkDir: "#" },
+      { linkText: "Top rated", linkDir: "#" },
+      { linkText: "Upcoming movies", linkDir: "#" },
+    ],
+  },
+  {
+    linkName: "Tv Show",
+    links: [
+      { linkText: "Latest shows", linkDir: "#" },
+      { linkText: "Airing today", linkDir: "#" },
+      { linkText: "On the air", linkDir: "#" },
+      { linkText: "Popular shows", linkDir: "#" },
+      { linkText: "Top rated shows", linkDir: "#" },
+    ],
+  },
+  {
+    linkName: "Genres",
+    links: [
+      { linkText: "Action", linkDir: "/movies/28" },
+      { linkText: "Adventure", linkDir: "/movies/12" },
+      { linkText: "Animation", linkDir: "/movies/16" },
+      { linkText: "Comedy", linkDir: "/movies/35" },
+      { linkText: "Crime", linkDir: "/movies/80" },
+      { linkText: "Documentary", linkDir: "/movies/99" },
+      { linkText: "Drama", linkDir: "/movies/18" },
+      { linkText: "Family", linkDir: "/movies/10751" },
+      { linkText: "Fantasy", linkDir: "/movies/14" },
+      { linkText: "History", linkDir: "/movies/36" },
+      { linkText: "Horror", linkDir: "/movies/27" },
+      { linkText: "Music", linkDir: "/movies/10402" },
+      { linkText: "Mystery", linkDir: "/movies/9648" },
+      { linkText: "Romance", linkDir: "/movies/10749" },
+      { linkText: "Science Fiction", linkDir: "/movies/878" },
+      { linkText: "TV Movie", linkDir: "/movies/10770" },
+      { linkText: "Thriller", linkDir: "/movies/53" },
+      { linkText: "War", linkDir: "/movies/10752" },
+      { linkText: "Western", linkDir: "/movies/37" },
+    ],
+  },
+];
+
 const NavBar = () => {
   return (
     <div className="my-2">
       <Navbar expand="lg" variant="dark">
         <Container fluid>
-          <Navbar.Brand href="#">MovieBUD</Navbar.Brand>
+          <Navbar.Brand href="/">MovieBUD</Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Nav
@@ -22,13 +69,17 @@ const NavBar = () => {
               style={{ maxHeight: "100px" }}
               navbarScroll
             >
-              <DropDown
-                linkName="Movies"
-                link1="Link 1"
-                link2="Link 2"
-                link3="Link 3"
-              />
-              <DropDown
+              {navPages.map((page) => {
+                return (
+                  <DropDown
+                    linkName={page.linkName}
+                    links={page.links}
+                    key={page.linkName}
+                  />
+                );
+              })}
+
+              {/*<DropDown
                 linkName="Tv Show"
                 link1="Link 1"
                 link2="Link 2"
@@ -51,7 +102,7 @@ const NavBar = () => {
                 link1="Link 1"
                 link2="Link 2"
                 link3="Link 3"
-              />
+              />*/}
             </Nav>
             <div>
               <Button className={`${styles.navFirstBtn} mx-3`}>SignUp</Button>

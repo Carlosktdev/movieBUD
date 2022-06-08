@@ -18,15 +18,12 @@ export default function Home({
 }) {
   return (
     <SSRProvider>
-      <Container>
-        <NavBar />
-        <Hero />
-        <MovieSlides slidetitle="Latest and trending" data={trends} />
-        <MovieSlides slidetitle="Animated Movies" data={animations} />
-        <MovieSlides slidetitle="Science Fiction Movies" data={sfis} />
-        <MovieSlides slidetitle="Thrillers" data={thrillers} />
-        <MovieSlides slidetitle="Romance Movies" data={romances} />
-      </Container>
+      <Hero />
+      <MovieSlides slidetitle="Latest and trending" data={trends} />
+      <MovieSlides slidetitle="Animated Movies" data={animations} />
+      <MovieSlides slidetitle="Science Fiction Movies" data={sfis} />
+      <MovieSlides slidetitle="Thrillers" data={thrillers} />
+      <MovieSlides slidetitle="Romance Movies" data={romances} />
     </SSRProvider>
   );
 }

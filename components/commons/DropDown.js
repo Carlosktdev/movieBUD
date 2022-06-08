@@ -1,12 +1,18 @@
 import { NavDropdown } from "react-bootstrap";
 
-const DropDown = ({ linkName, link1, link2, link3 }) => {
+const DropDown = ({ linkName, links }) => {
   return (
     <div className="mx-2">
       <NavDropdown title={linkName} id="navbarScrollingDropdown">
-        <NavDropdown.Item href="#action3">{link1}</NavDropdown.Item>
-        <NavDropdown.Item href="#action4">{link2}</NavDropdown.Item>
-        <NavDropdown.Item href="#action5">{link3}</NavDropdown.Item>
+        {links.map((link, index) => {
+          return (
+            <div key={index}>
+              <NavDropdown.Item href={link.linkDir}>
+                {link.linkText}
+              </NavDropdown.Item>
+            </div>
+          );
+        })}
       </NavDropdown>
     </div>
   );
