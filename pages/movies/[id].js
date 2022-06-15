@@ -19,6 +19,7 @@ const MovieGenres = ({ genres }) => {
                 title={movie.name || movie.original_title}
                 img={movie.poster_path}
                 points={movie.vote_average}
+                movieID={movie.id}
               />
             </div>
           );

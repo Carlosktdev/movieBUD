@@ -2,6 +2,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/globals.css";
 import { useEffect } from "react";
 import Layout from "../components/commons/Layout";
+import { SSRProvider } from "react-bootstrap";
 
 //a003f0dfd5211d98466593cdb5bdc6dc
 
@@ -10,9 +11,11 @@ function MyApp({ Component, pageProps }) {
     import("bootstrap/dist/js/bootstrap");
   }, []);
   return (
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
+    <SSRProvider>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </SSRProvider>
   );
 }
 

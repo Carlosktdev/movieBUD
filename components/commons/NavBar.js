@@ -8,6 +8,9 @@ import {
 } from "react-bootstrap";
 import DropDown from "./DropDown";
 import styles from "../../styles/Home.module.css";
+import Offcanvas from "react-bootstrap/Offcanvas";
+import { useState } from "react";
+import Form from "react-bootstrap/Form";
 
 const navPages = [
   {
@@ -57,6 +60,11 @@ const navPages = [
 ];
 
 const NavBar = () => {
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  const [searchTerm, setSearchTerm] = useState("");
+
   return (
     <div className="my-2">
       <Navbar expand="lg" variant="dark">
@@ -78,35 +86,27 @@ const NavBar = () => {
                   />
                 );
               })}
-
-              {/*<DropDown
-                linkName="Tv Show"
-                link1="Link 1"
-                link2="Link 2"
-                link3="Link 3"
-              />
-              <DropDown
-                linkName="Genres"
-                link1="Link 1"
-                link2="Link 2"
-                link3="Link 3"
-              />
-              <DropDown
-                linkName="Web series"
-                link1="Link 1"
-                link2="Link 2"
-                link3="Link 3"
-              />
-              <DropDown
-                linkName="Anime"
-                link1="Link 1"
-                link2="Link 2"
-                link3="Link 3"
-              />*/}
             </Nav>
-            <div>
-              <Button className={`${styles.navFirstBtn} mx-3`}>SignUp</Button>
-              <Button className={`${styles.navSecondBtn}`}>log in</Button>
+            <div className="d-flex">
+              <div>
+                <Form>
+                  <Form.Control
+                    type="email"
+                    placeholder="name@example.com"
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                  />
+                </Form>
+              </div>
+
+              <Offcanvas show={show} onHide={handleClose} backdrop={false}>
+                <Offcanvas.Header closeButton>
+                  <Offcanvas.Title>Offcanvas</Offcanvas.Title>
+                </Offcanvas.Header>
+                <Offcanvas.Body>
+                  Some text as placeholder. In real life you can have the
+                  elements you have chosen. Like, text, images, lists, etc.
+                </Offcanvas.Body>
+              </Offcanvas>
             </div>
           </Navbar.Collapse>
         </Container>
