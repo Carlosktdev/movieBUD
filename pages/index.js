@@ -29,7 +29,7 @@ export default function Home({
 }
 
 export async function getServerSideProps() {
-  const homeData = await axios.get("http://localhost:3000/api/v1/home");
+  const homeData = await axios.get("https://movie-bud.vercel.app/api/v1/home");
   return {
     props: {
       trends: await homeData.data.data.trends,
