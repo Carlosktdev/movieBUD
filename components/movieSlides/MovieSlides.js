@@ -13,9 +13,6 @@ const MovieSlides = ({ slidetitle, data }) => {
     <>
       <div className="d-flex text-light mt-5 align-items-center justify-content-between">
         <h2 className="pb-3">{slidetitle}</h2>
-        <Link href="/">
-          <h6 className={styles.viewAll}>View All</h6>
-        </Link>
       </div>
       <div>
         <Carousel className="pt-1">

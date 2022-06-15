@@ -9,8 +9,9 @@ import {
 import DropDown from "./DropDown";
 import styles from "../../styles/Home.module.css";
 import Offcanvas from "react-bootstrap/Offcanvas";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Form from "react-bootstrap/Form";
+import axios from "axios";
 
 const navPages = [
   {
@@ -64,6 +65,23 @@ const NavBar = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const [searchTerm, setSearchTerm] = useState("");
+  const [movies, setMovies] = useState([]);
+
+  useEffect(() => {
+    const delayDebounceFn = setTimeout(async () => {
+      if (searchTerm.length > 0) {
+        const movies = await axios.get(
+          "https://api.themoviedb.org/3/search/multi?api_key=a003f0dfd5211d98466593cdb5bdc6dc&language=en-US&query=" +
+            searchTerm +
+            "&page=1&include_adult=false"
+        );
+        setMovies(movies.data.results);
+        handleShow();
+      } else setSearchTerm("");
+    }, 3000);
+
+    return () => clearTimeout(delayDebounceFn);
+  }, [searchTerm]);
 
   return (
     <div className="my-2">
@@ -100,11 +118,30 @@ const NavBar = () => {
 
               <Offcanvas show={show} onHide={handleClose} backdrop={false}>
                 <Offcanvas.Header closeButton>
-                  <Offcanvas.Title>Offcanvas</Offcanvas.Title>
+                  <Offcanvas.Title>
+                    Movies containing {searchTerm}
+                  </Offcanvas.Title>
                 </Offcanvas.Header>
                 <Offcanvas.Body>
-                  Some text as placeholder. In real life you can have the
-                  elements you have chosen. Like, text, images, lists, etc.
+                  <div className="row">
+                    {movies.map((movie, index) => {
+                      return (
+                        <div key={index} className="col-6">
+                          <a href={`/movie/${movie.id}`}>
+                            <img
+                              className="img-fluid"
+                              src={
+                                "https://image.tmdb.org/t/p/w500" +
+                                movie.poster_path
+                              }
+                              alt="moviePoster"
+                            />
+                            <h6>{movie.title}</h6>
+                          </a>
+                        </div>
+                      );
+                    })}
+                  </div>
                 </Offcanvas.Body>
               </Offcanvas>
             </div>
