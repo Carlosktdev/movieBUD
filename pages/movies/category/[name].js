@@ -1,13 +1,13 @@
 import { useRouter } from "next/router";
 import axios from "axios";
-import MovieCard from "../../components/movieSlides/MovieCard";
+import MovieCard from "../../../components/movieSlides/MovieCard";
 
-const MovieGenres = ({ genres }) => {
+const MovieCategory = ({ category }) => {
   const {
-    query: { id },
+    query: { name },
   } = useRouter();
 
-  const movieList = genres.results;
+  const movieList = category.results;
   return (
     <div>
       <div className="row mt-4">
@@ -29,19 +29,19 @@ const MovieGenres = ({ genres }) => {
 };
 
 export async function getServerSideProps({ params }) {
-  const genres = await axios.get(
-    "https://api.themoviedb.org/3/discover/movie?api_key=a003f0dfd5211d98466593cdb5bdc6dc&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=" +
-      params.id +
-      "&with_watch_monetization_types=flatrate"
+  const response = await axios.get(
+    "https://api.themoviedb.org/3/movie/" +
+      params.name +
+      "?api_key=a003f0dfd5211d98466593cdb5bdc6dc&language=en-US"
   );
 
-  const genre = await genres.data;
+  const categories = await response.data;
 
   return {
     props: {
-      genres: genre,
+      category: categories,
     },
   };
 }
 
-export default MovieGenres;
+export default MovieCategory;

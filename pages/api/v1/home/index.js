@@ -5,7 +5,7 @@ export default async function handleMovie(req, res) {
   if (req.method === "GET") {
     try {
       const trends = await axios.get(
-        "https://api.themoviedb.org/3/trending/all/week?api_key=a003f0dfd5211d98466593cdb5bdc6dc"
+        "https://api.themoviedb.org/3/trending/movie/week?api_key=a003f0dfd5211d98466593cdb5bdc6dc"
       );
       const animations = await axios.get(
         "https://api.themoviedb.org/3/discover/movie?api_key=a003f0dfd5211d98466593cdb5bdc6dc&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=16&with_watch_monetization_types=flatrate"
