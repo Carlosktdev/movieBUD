@@ -13,7 +13,7 @@ const MovieCard = ({ title, img, points, movieID }) => {
             className={styles.trendingImg}
           ></img>
           <h6 className={styles.movieTittle}>{title}</h6>
-          <p>Calification: {points}</p>
+          <p className={styles.calification}>Calification: {points}</p>
         </div>
       </Link>
     </div>
